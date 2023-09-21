@@ -8,6 +8,7 @@ st.set_page_config(page_title="古文単語ガチャ")
 st.title('古文単語ガチャ')
 
 st.write('古文単語をランダムに表示して、勉強をサポートします！')
+st.write('がんばってください！')
 
 # Load the data
 @st.cache
