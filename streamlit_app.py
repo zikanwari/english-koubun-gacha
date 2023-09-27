@@ -33,8 +33,8 @@ if st.button('ガチャを引く！'):
     st.session_state.selected_word = selected_word
     st.session_state.display_meaning = False
 
-st.header(f"単 of_completion 士のもの！")
 if 'selected_word' in st.session_state:
+    st.header(f"単語名: {st.session_state.selected_word['単語']}")
     st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
 
     # 意味を確認するボタンを追加
