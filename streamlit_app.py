@@ -30,5 +30,8 @@ if st.button('ガチャを引く！'):
     selected_word = subset_df.sample().iloc[0]
     
     st.header(f"単語名: {selected_word['単語']}")
-    st.write(f"意味: {selected_word['意味']}")
     st.subheader(f"レア度: {selected_word['レア度']}")
+
+    # 意味を確認するボタンを追加
+    if st.button('意味を確認する'):
+        st.write(f"意味: {selected_word['意味']}")
