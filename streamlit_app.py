@@ -26,7 +26,7 @@ if st.button('ガチャを引く！'):
     st.session_state.display_meaning = False
 
 if 'selected_word' in st.session_state:
-    st.header(f"単語名: {st.session_state.selected_word['単語']}")
+    st.header(f"単語名: {st.session_state.selected_word['単語名']}")
 
     # 意味を確認するボタンを追加
     if st.button('意味を確認する'):
