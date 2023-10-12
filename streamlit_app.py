@@ -7,8 +7,8 @@ st.set_page_config(page_title="助動詞ガチャ")
 # タイトルと説明
 st.title('助動詞ガチャ')
 
-st.write('助動詞をランダムに表示して、勉強をサポートします！')
-st.write('がんばってください！')
+st.write('助動詞をランダムに表示します。')
+st.write('エンドレステスト頑張りましょう！')
 
 # Load the data
 @st.cache
