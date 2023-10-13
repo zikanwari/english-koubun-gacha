@@ -16,10 +16,11 @@
 </head>
 <body>
     <h1>ダイスロール</h1>
-    <div id="dice">Click to Roll</div>
+    <div id="dice">Tap to Stop</div>
 
     <script>
         let rolling = false; // ダイスが転がっているかどうかを管理するフラグ
+        let timer; // ダイスの転がるアニメーションのタイマー
 
         // ダイスを振る関数
         function rollDice() {
@@ -29,19 +30,29 @@
             return randomNumber;
         }
 
-        // ダイスをクリックしたときのイベントハンドラ
+        // ダイスをクリックまたはタップしたときのイベントハンドラ
         const dice = document.getElementById("dice");
         dice.addEventListener("click", function() {
             if (!rolling) { // ダイスが転がっていない場合
                 rolling = true; // ダイスが転がっている状態にする
                 dice.textContent = "Rolling...";
 
-                // 2秒後にランダムな数字を表示
-                setTimeout(function() {
+                // ランダムな数字を表示
+                timer = setInterval(function() {
                     const result = rollDice();
                     dice.textContent = result;
+                }, 100);
+
+                // 2秒後にダイスを止める
+                setTimeout(function() {
+                    clearInterval(timer); // アニメーションを停止
                     rolling = false; // ダイスが転がっていない状態に戻す
                 }, 2000);
+            } else { // ダイスが転がっている場合
+                clearInterval(timer); // アニメーションを停止
+                const result = rollDice();
+                dice.textContent = result;
+                rolling = false; // ダイスが転がっていない状態に戻す
             }
         });
     </script>
