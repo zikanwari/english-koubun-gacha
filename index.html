@@ -16,16 +16,16 @@
 </head>
 <body>
     <h1>ダイスロール</h1>
-    <div id="dice">Tap to Stop</div>
+    <div id="dice">Tap to Roll</div>
 
     <script>
         let rolling = false; // ダイスが転がっているかどうかを管理するフラグ
-        let timer; // ダイスの転がるアニメーションのタイマー
+        let timer; // ダイスのランダムな数字を表示するタイマー
 
         // ダイスを振る関数
         function rollDice() {
             const min = 1;
-            const max = 6;
+            const max = 41;
             const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
             return randomNumber;
         }
@@ -42,16 +42,8 @@
                     const result = rollDice();
                     dice.textContent = result;
                 }, 100);
-
-                // 2秒後にダイスを止める
-                setTimeout(function() {
-                    clearInterval(timer); // アニメーションを停止
-                    rolling = false; // ダイスが転がっていない状態に戻す
-                }, 2000);
             } else { // ダイスが転がっている場合
                 clearInterval(timer); // アニメーションを停止
-                const result = rollDice();
-                dice.textContent = result;
                 rolling = false; // ダイスが転がっていない状態に戻す
             }
         });
