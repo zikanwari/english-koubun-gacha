@@ -19,7 +19,7 @@ def load_data():
 words_df = load_data()
 
 # ガチャ機能
-while 1 == 1:
+while st.checkbox("スピン中"):
     selected_word = words_df.sample().iloc[0]
     
     # セッションステートに選択された単語を保存
