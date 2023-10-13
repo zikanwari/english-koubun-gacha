@@ -46,9 +46,8 @@
 </head>
 <body>
     <div id="dice-container">
-        <div id="result">Result: </div>
-        <div id="history">History: </div>
         <div id="dice">Tap</div>
+        <div id="history">History: </div>
     </div>
 
     <script>
@@ -66,7 +65,6 @@
 
         // ダイスをクリックまたはタップしたときのイベントハンドラ
         const dice = document.getElementById("dice");
-        const resultDisplay = document.getElementById("result");
         const historyDisplay = document.getElementById("history");
 
         dice.addEventListener("click", function() {
@@ -85,7 +83,6 @@
                 // 出目を記録
                 const result = parseInt(dice.textContent);
                 history.push(result);
-                resultDisplay.textContent = "Result: " + result;
 
                 // 履歴を表示
                 historyDisplay.textContent = "History: " + history.join(", ");
