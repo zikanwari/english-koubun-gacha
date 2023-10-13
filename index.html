@@ -34,10 +34,13 @@
 </head>
 <body>
     <div id="dice">Tap</div>
+    <div id="result">Result: </div>
+    <div id="history">History: </div>
 
     <script>
         let rolling = false; // ダイスが転がっているかどうかを管理するフラグ
         let timer; // ダイスのランダムな数字を表示するタイマー
+        let history = []; // 出目の履歴を保存する配列
 
         // ダイスを振る関数
         function rollDice() {
@@ -49,6 +52,9 @@
 
         // ダイスをクリックまたはタップしたときのイベントハンドラ
         const dice = document.getElementById("dice");
+        const resultDisplay = document.getElementById("result");
+        const historyDisplay = document.getElementById("history");
+
         dice.addEventListener("click", function() {
             if (!rolling) { // ダイスが転がっていない場合
                 rolling = true; // ダイスが転がっている状態にする
@@ -61,6 +67,14 @@
             } else { // ダイスが転がっている場合
                 clearInterval(timer); // アニメーションを停止
                 rolling = false; // ダイスが転がっていない状態に戻す
+
+                // 出目を記録
+                const result = parseInt(dice.textContent);
+                history.push(result);
+                resultDisplay.textContent = "Result: " + result;
+
+                // 履歴を表示
+                historyDisplay.textContent = "History: " + history.join(", ");
             }
         });
     </script>
