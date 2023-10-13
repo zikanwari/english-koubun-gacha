@@ -36,13 +36,11 @@
                 rolling = true; // ダイスが転がっている状態にする
                 dice.textContent = "Rolling...";
 
-                // ランダムな数字を表示
-                const result = rollDice();
-                dice.textContent = result;
-
-                // 2秒後にダイスが転がっている状態を解除
+                // 2秒後にランダムな数字を表示
                 setTimeout(function() {
-                    rolling = false;
+                    const result = rollDice();
+                    dice.textContent = result;
+                    rolling = false; // ダイスが転がっていない状態に戻す
                 }, 2000);
             }
         });
