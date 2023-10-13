@@ -11,7 +11,6 @@
             text-align: center;
             font-size: 36px;
             line-height: 100px;
-            transition: transform 2s;
         }
     </style>
 </head>
@@ -21,7 +20,6 @@
 
     <script>
         let rolling = false; // ダイスが転がっているかどうかを管理するフラグ
-        let timer; // ダイスの転がるアニメーションのタイマー
 
         // ダイスを振る関数
         function rollDice() {
@@ -36,22 +34,15 @@
         dice.addEventListener("click", function() {
             if (!rolling) { // ダイスが転がっていない場合
                 rolling = true; // ダイスが転がっている状態にする
-
-                // ダイスのアニメーションを開始
-                dice.style.transform = "rotate(360deg)";
                 dice.textContent = "Rolling...";
 
                 // ランダムな数字を表示
-                timer = setInterval(function() {
-                    const result = rollDice();
-                    dice.textContent = result;
-                }, 200);
+                const result = rollDice();
+                dice.textContent = result;
 
-                // 2秒後にダイスを止める
+                // 2秒後にダイスが転がっている状態を解除
                 setTimeout(function() {
-                    clearInterval(timer); // アニメーションを停止
-                    dice.style.transform = "rotate(0deg)";
-                    rolling = false; // ダイスが転がっていない状態に戻す
+                    rolling = false;
                 }, 2000);
             }
         });
