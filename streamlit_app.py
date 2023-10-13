@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import time
 
 st.set_page_config(page_title="助動詞ガチャ")
 
@@ -19,13 +18,14 @@ def load_data():
 words_df = load_data()
 
 # ガチャ機能
-while st.checkbox("スピン中"):
+if st.button('ガチャを引く！'):
     selected_word = words_df.sample().iloc[0]
     
     # セッションステートに選択された単語を保存
     st.session_state.selected_word = selected_word
     st.session_state.display_meaning = False
-    time.sleep(10)
+
+if 'selected_word' in st.session_state:
     st.header(f"単語名: {st.session_state.selected_word['単語名']}")
 
     # 意味を確認するボタンを追加
