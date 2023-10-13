@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ダイスロール</title>
+    <style>
+        #dice {
+            width: 100px;
+            height: 100px;
+            background-color: #FFFFFF;
+            border: 1px solid #000000;
+            text-align: center;
+            font-size: 36px;
+            line-height: 100px;
+            transition: transform 2s;
+        }
+    </style>
+</head>
+<body>
+    <h1>ダイスロール</h1>
+    <div id="dice">Click to Roll</div>
+
+    <script>
+        let rolling = false; // ダイスが転がっているかどうかを管理するフラグ
+        let timer; // ダイスの転がるアニメーションのタイマー
+
+        // ダイスを振る関数
+        function rollDice() {
+            const min = 1;
+            const max = 6;
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            return randomNumber;
+        }
+
+        // ダイスをクリックしたときのイベントハンドラ
+        const dice = document.getElementById("dice");
+        dice.addEventListener("click", function() {
+            if (!rolling) { // ダイスが転がっていない場合
+                rolling = true; // ダイスが転がっている状態にする
+
+                // ダイスのアニメーションを開始
+                dice.style.transform = "rotate(360deg)";
+                dice.textContent = "Rolling...";
+
+                // ランダムな数字を表示
+                timer = setInterval(function() {
+                    const result = rollDice();
+                    dice.textContent = result;
+                }, 200);
+
+                // 2秒後にダイスを止める
+                setTimeout(function() {
+                    clearInterval(timer); // アニメーションを停止
+                    dice.style.transform = "rotate(0deg)";
+                    rolling = false; // ダイスが転がっていない状態に戻す
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
